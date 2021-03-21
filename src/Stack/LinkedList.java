@@ -39,7 +39,7 @@ public class LinkedList<T> implements List<T>
   {
     if(isEmpty())
     {
-      throw new EmptyListException("Stack.List is empty");
+      throw new EmptyListException("List is empty");
     }
 
     var result = head.getData();

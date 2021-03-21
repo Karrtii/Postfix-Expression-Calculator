@@ -14,7 +14,7 @@ public class LinkedStack<T> implements Stack<T>
 
   @Override public boolean isEmpty()
   {
-    if (list.isEmpty() == true)
+    if (list.isEmpty())
     {
       return true;
     }
@@ -40,7 +40,7 @@ public class LinkedStack<T> implements Stack<T>
     }
     catch(EmptyListException e)
     {
-      System.out.println("Stack.Stack is empty");
+      System.out.println("Stack is empty");
     }
     return null;
   }

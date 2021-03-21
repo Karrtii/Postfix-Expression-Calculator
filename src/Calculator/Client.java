@@ -26,7 +26,7 @@ public class Client
     } catch (MalformedExpressionException e)
     {
       System.out.println("Malformed exception");
-      return 0;
     }
+    return 0;
   }
 }

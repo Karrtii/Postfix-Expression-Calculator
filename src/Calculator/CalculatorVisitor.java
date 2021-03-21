@@ -17,7 +17,7 @@ public class CalculatorVisitor implements Visitor, Calculator
     tokenStack.push(operand);
   }
 
-  private int popping()
+  private int popping() throws MalformedExpressionException
   {
     if (!tokenStack.isEmpty())
     {
@@ -25,6 +25,10 @@ public class CalculatorVisitor implements Visitor, Calculator
       if (first instanceof Operand) {
         return ((Operand) first).getValue();
       }
+    }
+    else
+    {
+      throw new MalformedExpressionException("Malformed");
     }
     return 0;
   }
@@ -65,7 +69,14 @@ public class CalculatorVisitor implements Visitor, Calculator
   @Override public int getResult() throws MalformedExpressionException
   {
     var result = popping();
-    return result;
+    if(!tokenStack.isEmpty())
+    {
+      throw new MalformedExpressionException("Malformed");
+    }
+    else
+    {
+      return result;
+    }
   }
 
   @Override public void visit(Operand operand)
@@ -80,7 +91,7 @@ public class CalculatorVisitor implements Visitor, Calculator
       performOperation(operator.getOperation());
     } catch (MalformedExpressionException e)
     {
-      System.out.println("It is malformed");
+      e.getMessage();
     }
   }
 
